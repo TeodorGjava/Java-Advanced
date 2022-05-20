@@ -29,6 +29,7 @@ public class compareMatrices {
         }
     }
 
+
     private static boolean arraysCompare(int[][] arr1, int[][] arr2) {
         if (arr1.length != arr2.length) {
             return false;}

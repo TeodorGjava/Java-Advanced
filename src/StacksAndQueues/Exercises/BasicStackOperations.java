@@ -28,7 +28,12 @@ public class BasicStackOperations {
             System.out.println("true");
         }else if (stack.isEmpty()){
             System.out.println(0);
-        }else{
+        }/*else{
+        sout(Collections.min(stack)
+        sotu(stack.stream().min(Integer::compare).get()); )
+        //sout(stack.stream().mapToInt(e->e).min().getAsInt))}
+         */
+        else{
             int current =Integer.MAX_VALUE;
             for (int i = 0; i < stack.size(); i++) {
                 if(stack.peek()<current){

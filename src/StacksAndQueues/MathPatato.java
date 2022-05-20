@@ -35,6 +35,7 @@ public class MathPatato {
                 count = 0;
                 if (!isPrime(cycle)) {
                     System.out.println("Removed " + currentKid);
+                    kids.pop();
                 } else {
                     System.out.println("Prime " + currentKid);
                     prime=true;
