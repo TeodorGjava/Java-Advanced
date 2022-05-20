@@ -1,4 +1,4 @@
-package queuesAndQueues.Exercises;
+package StacksAndQueues.Exercises;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;
