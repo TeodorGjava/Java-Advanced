@@ -17,7 +17,6 @@ public class MaxSumOf2x2Matrix {
             }
         }
         int[][] result = new int[2][2];
-        String winner = "";
         int currentMaxSum = Integer.MIN_VALUE;
         for (int r = 0; r < rows - 1; r++) {
             for (int c = 0; c < cols - 1; c++) {
