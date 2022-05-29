@@ -1,4 +1,4 @@
-package StacksAndQueues;
+package StacksAndQueues.Lab;
 
 import java.util.ArrayDeque;
 import java.util.Scanner;
@@ -25,20 +25,17 @@ public class MathPatato {
         for (int i = 0; i < arr.length; i++) {
             kids.offer(arr[i]);
         }
-        int count = 1;
-        int cycle = 0;
+        int count = 0;
+        int cycle = 1;
       while (kids.size()>1){
-          String currentKid = kids.poll();
-          if (cycle != 0) {
-              if(isPrime(cycle)){
-                  System.out.println("Prime "+ currentKid);
-                  kids.offer(currentKid);
-              }else{
-                  System.out.println("Removed "+ currentKid);
-              }
-          }else{
-              kids.offer(currentKid);
+              if(isPrime(cycle)&& count ==  rounds){
+                  System.out.println("Prime "+ kids.peek());
+                  count=0;
+              }else if(count == rounds){
+                  System.out.println("Removed "+ kids.poll());
+                  count=0;
           }
+          count++;
           cycle++;
           }
         System.out.println("Last is " + kids.peek());
