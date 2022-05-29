@@ -11,16 +11,16 @@ public class writeToFile {
         Scanner sc = new Scanner(System.in);
         String path = "D:\\Projects\\Java-Advanced-Files-and-Streams-Lab-Resources\\Files-and-Streams\\input.txt";
         FileInputStream file = new FileInputStream(path);
-        FileOutputStream out = new FileOutputStream("output.txt");
-        //accessing a file from memory
-        int bytte = file.read();
-        Set<Character> punctuation = Set.of(',', '.', '!', '?');
-        PrintWriter writer = new PrintWriter(out);
-        while (bytte != -1) {
-            if (!punctuation.contains((char) bytte)) {
-                out.write((char) bytte);
+        FileOutputStream out = new FileOutputStream("output2.txt");
+
+        int read = file.read();
+        while (read != -1){
+           String output = Integer.toBinaryString(read)+" ";
+            for (char c : output.toCharArray()) {
+                out.write(c);
             }
-            bytte = file.read();
+            read = file.read();
         }
+
     }
 }
