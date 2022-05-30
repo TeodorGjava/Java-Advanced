@@ -20,23 +20,10 @@ public class MaxElement {
                     stack.pop();
                     break;
                 case 3:
-                    int current = Integer.MIN_VALUE;
-                    int[] arr2 = new int[stack.size()];
-                    int x = stack.size();
-                    if (!stack.isEmpty()) {
-                        for (int j = 0; j < x; j++) {
-                            if (stack.peek() > current) {
-                                current = stack.peek();
-                                arr2[j] = stack.pop();
-                            }
-                        }
-                        System.out.println(current);
-                        for (int j = arr2.length - 1; j >= 0; j--) {
-                            stack.push(arr2[j]);
-                        }
+                    System.out.println(stack.stream().max(Integer::compare).get());
                         break;
                     }
             }
         }
     }
-}
+

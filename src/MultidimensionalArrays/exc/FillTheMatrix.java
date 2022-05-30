@@ -6,6 +6,15 @@ public class FillTheMatrix {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String[] input = sc.nextLine().split(", ");
+
+        if (Integer.parseInt((input[0])) == 1) {
+            System.out.println(1);
+            return;
+        }
+        if (Integer.parseInt(input[0]) == 0) {
+            System.out.println(0);
+            return;
+        }
         switch (input[1]) {
             case "A":
                 print(patternA(Integer.parseInt(input[0])));
@@ -41,18 +50,13 @@ public class FillTheMatrix {
         int num = 1;
 
         for (int i = 0; i < n; i++) {
-            int x = n;
-            for (int j = 0; j < n; j++, num++) {
-                if (i==0) {
+            if (i % 2 == 0) {
+                for (int j = 0; j < n; j++, num++) {
                     matrix[j][i] = num;
-                }else if(i%2==0){
-                    num+=n;
-                    matrix[j][i]=num;
-                    num-=n;
-                } else {
-                    matrix[j][i] = num + x;
-                    num--;
-                    x--;
+                }
+            } else {
+                for (int j = matrix[i].length - 1; j >= 0; j--) {
+                    matrix[j][i] = num++;
                 }
             }
         }
