@@ -10,11 +10,9 @@ public class countCharsType {
     public static void main(String[] args) throws IOException {
         Path path = Path
                 .of("C:\\TEO\\Java-Advanced\\Java-Advanced-Files-and-Streams-Exercises-Resources\\input.txt");
-        FileInputStream file = new FileInputStream(String.valueOf(path));
         List<String> list = Files.readAllLines(new File(String.valueOf(path))
                 .toPath(), Charset.defaultCharset());
         FileOutputStream out = new FileOutputStream("output.txt");
-        PrintWriter writer = new PrintWriter(out);
         int vowels = 0;
         int consonants = 0;
         int punct = 0;
