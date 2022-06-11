@@ -19,6 +19,6 @@ public class Main {
         }
         people.stream().filter(x -> x.getAge() > 30)
                 .sorted(Comparator.comparing(Person::getName))
-                .forEach(x -> System.out.printf("%s - %s%n", x.getName(), x.getAge()));
+                .forEach(System.out::println);
     }
 }

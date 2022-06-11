@@ -1,4 +1,4 @@
-package DataStructuresWorkshop;
+package DataStructuresWorkshop.Lab.SmartArray;
 
 import java.util.ArrayList;
 import java.util.Scanner;

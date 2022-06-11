@@ -8,15 +8,15 @@ public class Department {
     private List<Employee> employees;
 
 
-    public double avgSalary() {
-        return employees.stream().mapToDouble(e -> e.getSalary()).average().getAsDouble();
-    }
-
     public Department(String departmentName) {
         this.departmentName = departmentName;
         this.employees = new ArrayList<>();
     }
 
+
+    public double avgSalary() {
+        return employees.stream().mapToDouble(Employee::getSalary).average().getAsDouble();
+    }
 
     public String getDepartmentName() {
         return departmentName;
@@ -32,10 +32,6 @@ public class Department {
 
     public void setEmployees(List<Employee> employees) {
         this.employees = employees;
-    }
-
-    public void getAverage() {
-
     }
 
 }

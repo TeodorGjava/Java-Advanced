@@ -1,4 +1,4 @@
-package DataStructuresWorkshop.CustomStack;
+package DataStructuresWorkshop.Lab.CustomStack;
 
 import java.util.function.Consumer;
 

@@ -4,47 +4,57 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = Integer.parseInt(sc.nextLine());
-        List<Employee> employeeList = new ArrayList<>();
-        Map<String, Department> departmentMap = new HashMap<>();
-        for (int i = 0; i < n; i++) {
+        Scanner scanner = new Scanner(System.in);
+        int countOfEmployee = Integer.parseInt(scanner.nextLine());
+        ArrayList<Employee> employees = new ArrayList<>();
+        //Кой е най-високо платеният отдел???
+        //Принтираме служителите в низходящ ред по зплатата от този отдел
+        List<Department> departmentList = new ArrayList<>();
+        //
+        for (int i = 0; i < countOfEmployee; i++) {
+            String[] employeeInfo = scanner.nextLine().split(" ");
+            String name = employeeInfo[0];
+            double salary = Double.parseDouble(employeeInfo[1]);
+            String position = employeeInfo[2];
+            String department = employeeInfo[3];
             Employee employee = null;
-            String[] line = sc.nextLine().split(" ");
-            String name = line[0];
-            double salary = Double.parseDouble(line[1]);
-            String position = line[2];
-            String department = line[3];
-            switch (line.length) {
-                case 4:
+            switch (employeeInfo.length){
+                case 4: //NO email, NO age
                     employee = new Employee(name, salary, position, department);
                     break;
-                case 5:
-                    if (line[line.length - 1].contains("@")) {
-                        employee = new Employee(name, salary, position, department, line[4]);
-                    } else {
-                        employee = new Employee(name, salary, position, department, Integer.parseInt(line[4]));
-                    }
-                    break;
-                case 6:
-                    String email = line[4];
-                    int age = Integer.parseInt(line[5]);
+                case 6: // HAS email, HAS age
+                    String email = employeeInfo[4];
+                    int age = Integer.parseInt(employeeInfo[5]);
                     employee = new Employee(name, salary, position, department, email, age);
                     break;
+                case 5: // Или email Или age
+                    if(employeeInfo[4].matches("\\d+")){
+                        int personAge = Integer.parseInt(employeeInfo[4]);
+                        employee = new Employee(name, salary, position, department, personAge);
+                    } else {
+                        String personEmail = employeeInfo[4];
+                        employee = new Employee(name, salary, position, department, personEmail);
+                    }
+                    break;
             }
-            departmentMap.putIfAbsent(department, new Department(department));
-            departmentMap.get(department).getEmployees().add(employee);
+//            departmentList.putIfAbsent(department, new Department(department));
+            boolean departmentExists = departmentList.stream().filter(dep -> dep.getDepartmentName().equals(department)).count() >= 1;
+            if(!departmentExists){
+                departmentList.add(new Department(department));
+            }
+            Department currentDepartment = departmentList.stream().filter(dep -> dep.getDepartmentName().equals(department)).findFirst().get();
+            currentDepartment.getEmployees().add(employee);
         }
-        Department highestPayed = departmentMap.entrySet().stream()
-                .max(Comparator.comparingDouble(x -> x.getValue().avgSalary()))
-                .get()
-                .getValue();
-        System.out.printf("Highest Average Salary: %s%n",highestPayed.getDepartmentName());
-        highestPayed.getEmployees().stream().sorted((y1,y2)-> (int) (y2.getSalary()-y1.getSalary())).forEach(x->{
-            System.out.printf("%s %.2f %s %d%n",x.getName(),x.getSalary(),x.getEmail(),x.getAge());
-        });
+
+        Department highestPaidDepartment = departmentList.stream()
+                .max(Comparator.comparingDouble(department -> department.avgSalary()))
+                .get();
+        System.out.printf("Highest Average Salary: %s%n", highestPaidDepartment.getDepartmentName());
+
+        highestPaidDepartment.getEmployees().stream()
+                .sorted((e1, e2) -> Double.compare(e2.getSalary(), e1.getSalary()))
+                .forEach(System.out::println);
 
 
     }
 }
-

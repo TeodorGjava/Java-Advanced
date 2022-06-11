@@ -1,19 +1,29 @@
-package DefiningClasses.Exc;
+package DefiningClasses.Exc.SpeedRacing;
 
 public class Cars {
     private String model;
-    private int fuel;
+    private double fuel;
     private double consumption;
     private int mileage = 0;
 
-    public Cars(String model, int fuel, double consumption) {
+    public Cars(String model, double fuel, double consumption) {
         this.model = model;
         this.fuel = fuel;
         this.consumption = consumption;
     }
+public boolean hasEnoughFuel(int distance){
+        double fuelNeeded = distance*consumption;
+        return fuel>=fuelNeeded;
+}
 
-    public void drive(Cars car,int distance){
-
+    public void drive(String model, int distance) {
+        double fuelNeeded = distance * consumption;
+        if (fuelNeeded <fuel) {
+            this.mileage += distance;
+            this.fuel -= fuelNeeded;
+        }else{
+            System.out.println("Insufficient fuel for the drive");
+        }
     }
 
     public String getModel() {
@@ -24,11 +34,11 @@ public class Cars {
         this.model = model;
     }
 
-    public int getFuel() {
+    public double getFuel() {
         return fuel;
     }
 
-    public void setFuel(int fuel) {
+    public void setFuel(double fuel) {
         this.fuel = fuel;
     }
 
