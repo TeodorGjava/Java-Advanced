@@ -2,15 +2,16 @@ package DataStructuresWorkshop.Lab.CustomStack;
 
 import java.util.function.Consumer;
 
-public class StackOnSteroids {
-    private static class Node {
-        public Node(int element, Node previous) {
+public class StackOnSteroids<E> {
+    private static class Node<T> {
+
+        private final T element;
+        private final Node previous;
+
+        public Node(T element, Node previous) {
             this.element = element;
             this.previous = previous;
         }
-
-        private int element;
-        private Node previous;
     }
 
     private Node top;
@@ -20,36 +21,35 @@ public class StackOnSteroids {
 
     }
 
-    public void push(int element) {
-        Node newNode = new Node(element, this.top);
-        this.top = newNode;
+    public void push(E element) {
+        this.top = new Node<>(element, this.top);
         this.size++;
 
     }
     private void isEmpty(){
-        if(this.top==null){
+        if(this.top == null){
             throw new IllegalStateException("Cannot execute on empty stack!");
         }
     }
     public int size(){
         return this.size;
     }
-    public int pop() {
+    public Object pop() {
         isEmpty();
-        int element = this.top.element;
+        Object element = this.top.element;
         this.top = this.top.previous;
         this.size--;
         return element;
     }
 
-    public int peek() {
+    public Object peek() {
         isEmpty();
         return this.top.element;
     }
 
-    public void forEach(Consumer<Integer> consumer) {
+    public void forEach(Consumer<Object> consumer) {
         Node current = this.top;
-        while (current!=null){
+        while (current != null){
             consumer.accept(current.element);
             current=current.previous;
         }
