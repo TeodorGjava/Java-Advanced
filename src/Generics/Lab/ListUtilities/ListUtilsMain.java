@@ -1,9 +1,9 @@
-package Generics;
+package Generics.Lab.ListUtilities;
 
 import java.util.List;
 import java.util.Scanner;
 
-public class Main {
+public class ListUtilsMain {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         List<Integer> numbers = List.of(1000,464,723,9);

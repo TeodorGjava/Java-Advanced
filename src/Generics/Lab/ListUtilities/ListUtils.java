@@ -1,4 +1,4 @@
-package Generics;
+package Generics.Lab.ListUtilities;
 
 import java.util.List;
 

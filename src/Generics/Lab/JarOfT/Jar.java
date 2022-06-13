@@ -1,4 +1,4 @@
-package Generics;
+package Generics.Lab.JarOfT;
 
 import java.util.ArrayDeque;
 

@@ -1,8 +1,8 @@
-package Generics.JarOfT;
+package Generics.Lab.JarOfT;
 
 public class Main {
     public static void main(String[] args) {
-        Generics.Jar<Integer> jar = new Generics.Jar<>();
+        Jar<Integer> jar = new Jar<>();
         jar.add(3);
         jar.add(5);
         jar.add(7);

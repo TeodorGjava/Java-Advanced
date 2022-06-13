@@ -1,4 +1,4 @@
-package Generics;
+package Generics.Lab.ArrCreator;
 
 import java.util.Arrays;
 
