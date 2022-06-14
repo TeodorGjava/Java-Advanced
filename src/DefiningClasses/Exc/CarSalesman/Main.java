@@ -16,19 +16,19 @@ public class Main {
                 case 3:
                     if (engineInfo[2].length() > 1) {
                         String displacement = engineInfo[2];
-                        engine = new Engine(type, power, displacement);
+                        engine = new Engine(type, power, Integer.parseInt(displacement));
                     } else {
-                        char efficiency = engineInfo[2].charAt(0);
+                        String efficiency = engineInfo[2];
                         engine = new Engine(type, power, efficiency);
                     }
                     break;
                 case 4:
-                    engine = new Engine(type, power, Integer.parseInt(engineInfo[2]), engineInfo[3]);
+                    engine = new Engine(type, power, engineInfo[2], engineInfo[3]);
                     break;
                 default:
                     engine = new Engine(type, power);
             }
-            engines.put(type,engine);
+            engines.put(type, engine);
         }
         System.out.println();
         List<Car> cars = new ArrayList<>();
@@ -41,22 +41,22 @@ public class Main {
             Engine currentEngine = engines.get(engineName);
             switch (carInfo.length) {
                 case 2:
-                    car = new Car(model,currentEngine);
+                    car = new Car(model, currentEngine);
                     break;
                 case 3:
-                    if(Character.isDigit(carInfo[2].charAt(0))){
-                        car = new Car(model,currentEngine,carInfo[2]);
-                    }else{
-                        car = new Car(model,currentEngine,carInfo[2]);
+                    if (Character.isDigit(carInfo[2].charAt(0))) {
+                        car = new Car(model, currentEngine, carInfo[2]);
+                    } else {
+                        car = new Car(model, currentEngine, carInfo[2]);
                     }
                     break;
                 case 4:
-                    car = new Car(model,currentEngine,Integer.parseInt(carInfo[2]),carInfo[3]);
+                    car = new Car(model, currentEngine, carInfo[2], carInfo[3]);
                     break;
             }
             cars.add(car);
         }
 
-        cars.forEach(Car::toString);
+        cars.forEach(System.out::print);
     }
 }
