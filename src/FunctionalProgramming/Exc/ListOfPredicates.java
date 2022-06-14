@@ -10,14 +10,22 @@ public class ListOfPredicates {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = Integer.parseInt(sc.nextLine());
-        List<Integer> list = Arrays.stream(sc.nextLine().split(" "))
+        List<Integer> listOfNumbersToDivide = Arrays.stream(sc.nextLine().split(" "))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
-        Predicate<List<Integer>> isDivisible = num -> {
-            for (Integer x: num
-                 ) {
-                //
+        Predicate<Integer> isDivisible = num -> {
+            for (Integer numToDivide : listOfNumbersToDivide
+            ) {
+                if (num % numToDivide != 0) {
+                    return false;
+                }
             }
-        return true;};
+            return true;
+        };
+        for (int i = 1; i <= n; i++) {
+            if (isDivisible.test(i)) {
+                System.out.print(i + " ");
+            }
+        }
     }
 }
