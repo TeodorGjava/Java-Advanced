@@ -4,59 +4,123 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int enginesCount = Integer.parseInt(sc.nextLine());
-        Map<String, Engine> engines = new LinkedHashMap<>();
-        for (int i = 0; i < enginesCount; i++) {
-            String[] engineInfo = sc.nextLine().split(" ");
-            Engine engine = null;
-            String type = engineInfo[0];
-            String power = engineInfo[1];
-            switch (engineInfo.length) {
-                case 3:
-                    if (engineInfo[2].length() > 1) {
-                        String displacement = engineInfo[2];
-                        engine = new Engine(type, power, Integer.parseInt(displacement));
-                    } else {
-                        String efficiency = engineInfo[2];
-                        engine = new Engine(type, power, efficiency);
-                    }
-                    break;
-                case 4:
-                    engine = new Engine(type, power, engineInfo[2], engineInfo[3]);
-                    break;
-                default:
-                    engine = new Engine(type, power);
+        Scanner scan = new Scanner(System.in);
+
+        Map<String, List<Engine>> engineParameters = new HashMap<>();
+        int length = 0;
+        int countEngines = Integer.parseInt(scan.nextLine());
+        boolean hasNumber;
+        for (int i = 0; i < countEngines; i++) {
+            String[] tokens = scan.nextLine().split("\\s+");
+            String engineModel = tokens[0];
+            String power = tokens[1];
+            String displacement = "n/a";
+            String efficiency = "n/a";
+
+            length = tokens.length;
+            if (length == 3) {
+                String current = tokens[2];
+                hasNumber = checkForNumbers(current);
+                if (hasNumber) {
+                    displacement = current;
+                } else {
+                    efficiency = current;
+                }
             }
-            engines.put(type, engine);
-        }
-        System.out.println();
-        List<Car> cars = new ArrayList<>();
-        int carsCount = Integer.parseInt(sc.nextLine());
-        for (int i = 0; i < carsCount; i++) {
-            String[] carInfo = sc.nextLine().split(" ");
-            String model = carInfo[0];
-            String engineName = carInfo[1];
-            Car car = null;
-            Engine currentEngine = engines.get(engineName);
-            switch (carInfo.length) {
-                case 2:
-                    car = new Car(model, currentEngine);
-                    break;
-                case 3:
-                    if (Character.isDigit(carInfo[2].charAt(0))) {
-                        car = new Car(model, currentEngine, carInfo[2]);
-                    } else {
-                        car = new Car(model, currentEngine, carInfo[2]);
-                    }
-                    break;
-                case 4:
-                    car = new Car(model, currentEngine, carInfo[2], carInfo[3]);
-                    break;
+
+            if (length > 3) {
+                displacement = tokens[2];
+                efficiency = tokens[3];
             }
-            cars.add(car);
+
+            Engine currentEngine = new Engine(engineModel, power, displacement, efficiency);
+            engineParameters.putIfAbsent(engineModel, new ArrayList<>());
+            engineParameters.get(engineModel).add(currentEngine);
         }
 
-        cars.forEach(System.out::print);
+
+        Map<Integer, List<Car>> carParameters = new LinkedHashMap<>();
+
+        int quantityCars = Integer.parseInt(scan.nextLine());
+
+        for (int i = 0; i < quantityCars; i++) {
+            String[] tokens = scan.nextLine().split("\\s+");
+            String model = tokens[0];
+            String engine = tokens[1];
+            String weight = "n/a";
+            String color = "n/a";
+            length = tokens.length;
+            if (length == 3) {
+                String current = tokens[2];
+                hasNumber = checkForNumbers(current);
+                if (hasNumber) {
+                    weight = current;
+                } else {
+                    color = current;
+                }
+            }
+
+            if (length == 4) {
+                weight = tokens[2];
+                color = tokens[3];
+            }
+
+            Engine enginePerThisCar = getParticularEngine(engine, engineParameters);
+            Car currentCar = new Car(model, enginePerThisCar, weight, color);
+            int position = i;
+            carParameters.putIfAbsent(position, new ArrayList<>());
+            carParameters.get(position).add(currentCar);
+        }
+
+
+        for (Map.Entry<Integer, List<Car>> currentElement : carParameters.entrySet()) {
+            currentElement.getValue().stream().forEach(f-> {
+                System.out.println(String.format("%s:" + "\n" + "  %s:\n" +
+                                "    Power: %s\n" +
+                                "    Displacement: %s\n" +
+                                "    Efficiency: %s\n" +
+                                "  Weight: %s\n" +
+                                "  Color: %s",f.getModel(),
+                        f.getEngine().getEngineModel(),
+                        f.getEngine().getPower(),
+                        f.getEngine().getDisplacement(),
+                        f.getEngine().getEfficiency(),
+                        f.getWeight(),f.getColor()));
+            });
+        }
+
+//        for (List<Car1> value : carParameters.values()) {
+//            System.out.println(value.
+//                    toString().replace("[", "")
+//                    .replace("]", "")
+//                    .replace("=", ":"));
+//        }
+    }
+
+    private static Engine getParticularEngine(String engine, Map<String, List<Engine>> engineParameters) {
+        List<Engine> temp = new ArrayList<>();
+        Engine engine1;
+        for (Map.Entry<String, List<Engine>> element : engineParameters.entrySet()) {
+            String modelCurrent = element.getKey();
+            if (modelCurrent.equals(engine)) {
+                String specificModel = element
+                        .getValue().get(0).getEngineModel();
+                String power = element.getValue().get(0).getPower();
+                String displacement = element.getValue().get(0).getDisplacement();
+                String efficiency = element.getValue().get(0).getEfficiency();
+                return engine1 = new Engine(specificModel, power, displacement, efficiency);
+            }
+        }
+        return null;
+    }
+
+    private static boolean checkForNumbers(String current) {
+        for (int i = 0; i < current.length(); i++) {
+            int ascii = current.charAt(i);
+            if (ascii > 47 && ascii < 58) {
+                return true;
+            }
+        }
+        return false;
     }
 }
