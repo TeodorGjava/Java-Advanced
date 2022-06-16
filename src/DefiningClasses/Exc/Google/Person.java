@@ -106,9 +106,7 @@ class Parents {
         return parent;
     }
 
-    public void setParent(String parent) {
-        this.parent = parent;
-    }
+
 
     public String getParentBirthday() {
         return parentBirthday;

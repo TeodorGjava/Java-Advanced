@@ -43,7 +43,7 @@ public class Main {
                 case "car":
                     String model = tokens[2];
                     String speed = tokens[3];
-                    Car car = new Car(model,speed);
+                    Car car = new Car(model, speed);
                     personMap.get(name).setCar(car);
                     break;
             }
@@ -53,25 +53,24 @@ public class Main {
         System.out.println(person);
         System.out.println("Company:");
         Person value = personMap.get(person);
-        if(value.getCompany()!=null){
-            System.out.println(value.getCompany().getCompanyName()+" "+value.getCompany().getDepartment()+" "+value.getCompany().getSalary());
+        if (value.getCompany() != null) {
+            System.out.printf("%s %s %.2f%n",value.getCompany().getCompanyName(), value.getCompany().getDepartment(), value.getCompany().getSalary());
         }
         System.out.println("Car:");
-        if(value.getCar()!=null){
-            System.out.printf("%s %s%n",value.getCar().getModel(),value.getCar().getSpeed());
+        if (value.getCar() != null) {
+            System.out.printf("%s %s%n", value.getCar().getModel(), value.getCar().getSpeed());
         }
         System.out.println("Pokemon:");
-        if(!value.getPokemon().isEmpty()){
-            value.getPokemon().forEach(x-> System.out.print(x.getPokemonName()+" "+ x.getPokemonType()+"\n"));
+        if (!value.getPokemon().isEmpty()) {
+            value.getPokemon().forEach(x -> System.out.print(x.getPokemonName() + " " + x.getPokemonType() + "\n"));
         }
         System.out.println("Parents:");
-        if(!value.getParents().isEmpty()){
-            value.getParents().forEach(x-> System.out.print(x.getParent()+" "+ x.getParentBirthday()+"\n"));
+        if (!value.getParents().isEmpty()) {
+            value.getParents().forEach(x -> System.out.print(x.getParent() + " " + x.getParentBirthday() + "\n"));
         }
         System.out.println("Children:");
-        if(!value.getChildren().isEmpty()){
-            value.getChildren().forEach(x-> System.out.print(x.getChildName()+" "+ x.getChildBirthday()+"\n"));
+        if (!value.getChildren().isEmpty()) {
+            value.getChildren().forEach(x -> System.out.print(x.getChildName() + " " + x.getChildBirthday() + "\n"));
         }
-
     }
 }
