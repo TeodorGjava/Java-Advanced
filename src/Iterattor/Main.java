@@ -14,6 +14,14 @@ public class Main {
         bookList.add(book1);
         bookList.add(book2);
         bookList.add(book3);
-
+        if (book1.compareTo(book2) > 0) {
+            System.out.printf("%s is before %s%n", book1, book2);
+        } else if (book1.compareTo(book2) < 0) {
+            System.out.printf("%s is before %s%n", book1, book2);
+        } else {
+            System.out.println("Book are equal");
+        }
     }
+
+
 }

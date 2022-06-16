@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Book {
+public class Book implements Comparable<Book>  {
     private String title;
     private int year;
     private List<String> authors;
+
 
     public Book(String title, int year, String... authors) {
         setTitle(title);
@@ -45,5 +46,10 @@ public class Book {
         } else {
             this.authors = Arrays.asList(newTitle);
         }
+    }
+
+    @Override
+    public int compareTo(Book o) {
+        return 0;
     }
 }
