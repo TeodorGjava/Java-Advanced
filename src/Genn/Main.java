@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        CustomList<String> customList = new CustomList();
+        CustomList<String> customList = new CustomList<>();
         String[] input = sc.nextLine().split(" ");
         while (!"END".equals(input[0])) {
 
@@ -41,6 +41,8 @@ public class Main {
                     System.out.println(customList);
                     break;
                 case"Sort":
+                    //TODO SORT FUNCTION
+                    customList.sort(customList);
                     break;
                 default:
                     System.out.println("Invalid command");
