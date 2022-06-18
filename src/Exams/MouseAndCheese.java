@@ -30,12 +30,20 @@ public class MouseAndCheese {
         System.out.println();
         while (!command.equals("end") && mouseIsInField) {
             switch (command) {
-                case "up" -> moveMouse(field, -1, 0);
-                case "down" -> moveMouse(field, 1, 0);
-                case "left" -> moveMouse(field, 0, -1);
-                case "right" -> moveMouse(field, 0, 1);
+                case "up":
+                    moveMouse(field, -1, 0);
+                    break;
+                case "down":
+                    moveMouse(field, 1, 0);
+                    break;
+                case "left":
+                    moveMouse(field, 0, -1);
+                    break;
+                case "right":
+                    moveMouse(field, 0, 1);
+                    break;
             }
-            if(!mouseIsInField){
+            if (!mouseIsInField) {
                 break;
             }
 
@@ -73,8 +81,8 @@ public class MouseAndCheese {
         field[nextRow][nextCol] = 'M';
         row = nextRow;
         col = nextCol;
-        if(isOnBonusField){
-            moveMouse(field,rowMutator,colMutator);
+        if (isOnBonusField) {
+            moveMouse(field, rowMutator, colMutator);
         }
     }
 
