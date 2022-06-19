@@ -12,7 +12,7 @@ public class CapitalLETERS {
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
         Path path = Path
-                .of("C:\\TEO\\Java-Advanced\\Java-Advanced-Files-and-Streams-Exercises-Resources\\input.txt");
+                .of("C:\\Users\\LL\\Desktop\\input.txt");
         FileInputStream file = new FileInputStream(String.valueOf(path));
         List<String> list = Files.readAllLines(new File(String.valueOf(path)).toPath(), Charset.defaultCharset());
         FileOutputStream out = new FileOutputStream("output.txt");
