@@ -5,46 +5,84 @@ import java.util.Scanner;
 
 public class ShuffleMatrix {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int[] sizes = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-        int rows = sizes[0];
-        int cols = sizes[1];
-        String[][] matrix = new String[rows][cols];
-        for (int row = 0; row < rows; row++) {
-            String[] line = sc.nextLine().split(" ");
-            for (int col = 0; col < cols; col++) {
-                matrix[row] = line;
-            }
+        try {
+            Scanner scanner = new Scanner(System.in);
+            String[] input = scanner.nextLine().split("\\s+");
+            int rowsMatrix = Integer.parseInt(input[0]);
+            int colsMatrix = Integer.parseInt(input[1]);
+            String[][] matrix = new String[rowsMatrix][colsMatrix];
+            readMatrix(scanner, matrix);
+            swapMatrix(scanner, matrix);
+        } catch (ArrayIndexOutOfBoundsException a){
+            printInvalidInput();
         }
-        String[] command = sc.nextLine().split("\\s+");
-        while (!command[0].equals("END")) {
-            if(!command[0].equals("swap")){
-                wrong();
-            }else{
-            int r1 = Integer.parseInt(command[1]);
-            int c1 = Integer.parseInt(command[2]);
-            int r2 = Integer.parseInt(command[3]);
-            int c2 = Integer.parseInt(command[4]);
-            if (command[0].equals("swap") && r1 <= rows - 1 && r2 <= rows - 1 && c1 <= cols - 1 && c2 <= cols - 1) {
-                String first = matrix[r1][c1];
-                matrix[r1][c1] = matrix[r2][c2];
-                matrix[r2][c2] = first;
-                print(matrix, rows, cols);
-            }else{
-                wrong();
-            }}
-            command = sc.nextLine().split("\\s+");
+
+    }
+
+    private static void swapMatrix(Scanner scanner, String[][] matrix) {
+        try {
+            while (true){
+                String line = scanner.nextLine();
+                if (line.equals("END")){
+                    break;
+                }
+
+                String[] comands = line.split("\\s+");
+                if (comands[0].equals("swap") && comands.length == 5){
+                    int row1 = Integer.parseInt(comands[1]);
+                    int col1 = Integer.parseInt(comands[2]);
+                    int row2 = Integer.parseInt(comands[3]);
+                    int col2 = Integer.parseInt(comands[4]);
+                    try {
+                        String temporalElementFromMatrix = matrix[row1][col1];
+                        matrix[row1][col1] = matrix[row2][col2];
+                        matrix[row2][col2] = temporalElementFromMatrix;
+                        printMatrix(matrix);
+                    } catch (ArrayIndexOutOfBoundsException a){
+                        printInvalidInput();
+                    }
+                } else {
+                    printInvalidInput();
+                }
+            }
+        } catch (ArrayIndexOutOfBoundsException a){
+            printInvalidInput();
+        }
+
+    }
+
+    private static void printInvalidInput() {
+        try {
+            System.out.printf("Invalid input!%n");
+        } catch (ArrayIndexOutOfBoundsException a){
+            printInvalidInput();
         }
     }
-    private static void wrong(){
-        System.out.println("Invalid input!");
-    }
-    private static void print(String[][] matrix, int rows, int cols) {
-        for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < cols; col++) {
-                System.out.print(matrix[row][col] + " ");
+
+    private static void printMatrix(String[][] matrix) {
+        try {
+            for (int row = 0; row < matrix.length; row++) {
+                for (int col = 0; col < matrix[0].length; col++) {
+                    System.out.printf("%s ", matrix[row][col]);
+                }
+
+                System.out.printf("%n");
             }
-            System.out.println();
+        } catch (ArrayIndexOutOfBoundsException a){
+            printInvalidInput();
+        }
+    }
+
+    private static void readMatrix(Scanner scanner, String[][] matrix) {
+        try {
+            for (int row = 0; row < matrix.length; row++) {
+                String[] currentRow = scanner.nextLine().split("\\s+");
+                for (int col = 0; col < currentRow.length; col++) {
+                    matrix[row][col] = currentRow[col];
+                }
+            }
+        } catch (ArrayIndexOutOfBoundsException a){
+            printInvalidInput();
         }
     }
 }
