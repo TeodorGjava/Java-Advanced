@@ -1,0 +1,13 @@
+1.Stacks and Queues Lab. 07.Math Potato , 08.BrowserHistory
+
+2.Multidimensional Arrays  - Ex 11.Reverse Matrix Diagonals
+
+3.Sets and Maps Lab 02.SoftUni party 08.Academy Graduation
+
+4 Sets and Maps Ex 02.Sets of Elements 07.Hand of cards 08,09,10,11,12,13
+
+5.Streams and Files  Ex  03.AllCapitals
+
+6.Functional programming lab 06. Find evens or odds
+
+7. Defining classes lab 03 Bank Acc

@@ -1,7 +1,6 @@
-package Iterattor.Exc.StrategyPattern;
+package Iterattor;
 
 import java.util.Comparator;
-import java.util.Locale;
 
 public class NameComparator implements Comparator<Person> {
     @Override

@@ -1,27 +1,27 @@
 package Iterattor;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
+import java.util.TreeSet;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Book book1 = new Book("Animal farm", 2003, "George Orwell");
-        Book book2 = new Book("Animal farm", 2003, "George Orwell", "Robert");
-        Book book3 = new Book("Animal farm", 2003);
-        List<Book> bookList = new ArrayList<>();
-        bookList.add(book1);
-        bookList.add(book2);
-        bookList.add(book3);
-        if (book1.compareTo(book2) > 0) {
-            System.out.printf("%s is before %s%n", book1, book2);
-        } else if (book1.compareTo(book2) < 0) {
-            System.out.printf("%s is before %s%n", book1, book2);
-        } else {
-            System.out.println("Book are equal");
+        int n = Integer.parseInt(sc.nextLine());
+        TreeSet<Person> byName = new TreeSet<>(new AgeComparator());
+        TreeSet<Person> byAge = new TreeSet<>(new NameComparator());
+        for (int i = 0; i < n; i++) {
+            String[] peopleInfo = sc.nextLine().split(" ");
+            String name = peopleInfo[0];
+            int age = Integer.parseInt(peopleInfo[1]);
+            Person person = new Person(name,age);
+            byAge.add(person);
+            byName.add(person);
+        }
+        for(Person person : byAge){
+            System.out.print(person);
+        }
+        for(Person person: byName){
+            System.out.print(person);
         }
     }
-
-
 }

@@ -1,4 +1,4 @@
-package Iterattor.Exc.StrategyPattern;
+package Iterattor;
 
 public class Person {
     private String name;

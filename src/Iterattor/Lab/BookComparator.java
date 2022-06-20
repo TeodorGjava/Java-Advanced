@@ -1,9 +1,9 @@
-package Iterattor;
+package Iterattor.Lab;
 
 public class BookComparator implements Comparable<Book> {
     @Override
     public int compareTo(Book o) {
-        return 0;
+        return this.compareTo(o);
     }
 
     public BookComparator() {
