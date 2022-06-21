@@ -41,8 +41,8 @@ public class Main {
                     System.out.println(customList);
                     break;
                 case"Sort":
-                    //TODO SORT FUNCTION
-                    customList.sort(customList);
+                    //static without initialization
+                    Sorter.sort(customList);
                     break;
                 default:
                     System.out.println("Invalid command");
