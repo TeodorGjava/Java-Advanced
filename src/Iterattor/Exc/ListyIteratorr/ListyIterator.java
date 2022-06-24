@@ -7,12 +7,12 @@ import java.util.List;
 import static java.util.Arrays.*;
 
 public class ListyIterator implements Iterable<String> {
-    private final List<String> elements;
+    private List<String> elements;
     private int currentIndex;
 
 
     public boolean hasNext() {
-        return currentIndex < elements.size();
+        return currentIndex < elements.size()-1;
     }
 
     public boolean move() {
@@ -25,12 +25,13 @@ public class ListyIterator implements Iterable<String> {
 
     public ListyIterator(String... elements) {
 
-        this.elements = List.of(elements);
+        this.elements = Arrays.asList(elements);
+        this.currentIndex=0;
     }
 
     public void print() {
         if (this.elements.isEmpty()) {
-            throw new IllegalStateException("Invalid operation");
+            System.out.println("Invalid Operation!");
         } else {
             System.out.println(this.elements.get(currentIndex));
         }

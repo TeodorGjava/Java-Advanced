@@ -3,9 +3,7 @@ package Algorithms.MergeSort;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Main {
-
-    public static class MergeSort {
+public class MergeSort {
 
         // Merge two subarrays L and M into arr
         void merge(int arr[], int p, int q, int r) {
@@ -57,7 +55,7 @@ public class Main {
         }
 
         // Divide the array into two subarrays, sort them and merge them
-       public void mergeSort(int arr[], int l, int r) {
+        void mergeSort(int arr[], int l, int r) {
             if (l < r) {
 
                 // m is the point where the array is divided into two subarrays
@@ -72,19 +70,22 @@ public class Main {
         }
 
         // Print the array
-        void printArray(int[] arr) {
+        static void printArray(int arr[]) {
             int n = arr.length;
             for (int i = 0; i < n; ++i)
                 System.out.print(arr[i] + " ");
             System.out.println();
         }
-    }
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        MergeSort ms = new MergeSort();
-        int[] arr = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-        ms.mergeSort(arr,0,arr.length-1);
+
+        // Driver program
+        public static void main(String args[]) {
+            Scanner sc = new Scanner(System.in);
+            int arr[] = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+
+            MergeSort ob = new MergeSort();
+            ob.mergeSort(arr, 0, arr.length - 1);
 
 
+            printArray(arr);
+        }
     }
-}

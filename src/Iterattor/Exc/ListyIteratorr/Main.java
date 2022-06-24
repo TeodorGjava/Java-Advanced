@@ -30,9 +30,9 @@ public class Main {
                 case "Move":
                     System.out.println(listyIterator.move());
                     break;
-                case"PrintAll":
-                    for (String element: listyIterator)
-                    break;
+                case "PrintAll":
+                    for (String element : listyIterator)
+                        break;
 
             }
             input = sc.nextLine();
