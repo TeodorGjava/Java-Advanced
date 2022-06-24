@@ -1,8 +1,23 @@
 package DataStructuresWorkshop.Lab.CustomStack;
 
+import java.util.Iterator;
 import java.util.function.Consumer;
 
-public class StackOnSteroids<E> {
+public class StackOnSteroids<E> implements Iterable<E> {
+    public Iterator<E> iterator(){
+        return new Iterator<E>() {
+            @Override
+            public boolean hasNext() {
+                return false;
+            }
+
+            @Override
+            public E next() {
+                return null;
+            }
+        };
+    }
+
     private static class Node<T> {
 
         private final T element;
@@ -47,11 +62,4 @@ public class StackOnSteroids<E> {
         return this.top.element;
     }
 
-    public void forEach(Consumer<Object> consumer) {
-        Node current = this.top;
-        while (current != null){
-            consumer.accept(current.element);
-            current=current.previous;
-        }
-    }
 }

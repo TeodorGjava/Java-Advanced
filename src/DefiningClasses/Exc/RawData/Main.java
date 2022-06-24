@@ -32,7 +32,7 @@ public class Main {
             cars.stream().filter(car -> car.getCargo().getType().equals("fragile")).filter(car -> car.getTires()
                     .stream().anyMatch(tire -> tire.getPressure()<1)).forEach(x-> System.out.println(x.getModel()));
         }else{
-cars.stream().filter(car ->car.getCargo().getType().equals("flamable"))
+        cars.stream().filter(car ->car.getCargo().getType().equals("flamable"))
         .filter(car->car.getEngine().getPower()>250).forEach(car -> System.out.println(car.getModel()));
         }
     }

@@ -1,53 +1,59 @@
 package DefiningClasses.Lab.BankAcc;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String line = sc.nextLine();
-        Map<Integer, Bank> bankAccounts = new LinkedHashMap<>();
-        while (!line.equals("End")) {
-            String output = null;
-            String[] elements = line.split(" ");
-            String command = elements[0];
-            Bank bankAccount;
-            switch (command) {
-                case "Create":
-                     bankAccount = new Bank();
-                    bankAccounts.put(bankAccount.getIds(), bankAccount);
-                    output = "Account ID" + bankAccount.getId() + " created";
-                    break;
-                case "Deposit":
-                    int id = Integer.parseInt(elements[1]);
-                    int amount = Integer.parseInt(elements[2]);
-                    if (bankAccounts.containsKey(id)) {
-                        Bank bank = bankAccounts.get(id);
-                        bank.deposit(amount);
-                        output = String.format("Deposited %s to ID%d", amount, bank.getId());
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+
+            Map<Integer, BankAccount> map = new HashMap<>();
+
+            String line = scanner.nextLine();
+
+            while (!line.equals("End")) {
+
+                String[] tokens = line.split("\\s+");
+
+                String command = tokens[0];
+
+                String output = null;
+                if (command.equals("Create")) {
+                    BankAccount bankAccount = new BankAccount();
+                    int key = bankAccount.getId();
+                    map.put(key, bankAccount);
+                    output = "Account ID" + key + " created";
+                } else if (command.equals("Deposit")) {
+                    int id = Integer.parseInt(tokens[1]);
+                    int amount = Integer.parseInt(tokens[2]);
+                    BankAccount bankAccount = map.get(id);
+                    if (bankAccount != null) {
+                        bankAccount.deposit(amount);
+                        output = "Deposited " + amount + " to ID" + id;
                     } else {
                         output = "Account does not exist";
                     }
-                    break;
-                case "SetInterest":
-                    double interest = Double.parseDouble(elements[1]);
-                    Bank.setInterest_Rate(interest);
-                    break;
-                case "GetInterest":
-                    int ID = Integer.parseInt(elements[1]);
-                    if (bankAccounts.containsKey(ID)) {
-                        int years = Integer.parseInt(elements[2]);
-                        bankAccount = bankAccounts.get(ID);
+                } else if (command.equals("SetInterest")) {
+                    double interest = Double.parseDouble(tokens[1]);
+                    BankAccount.setInterestRate(interest);
+                } else {
+                    int id = Integer.parseInt(tokens[1]);
+                    int years = Integer.parseInt(tokens[2]);
+                    BankAccount bankAccount = map.get(id);
+                    if (bankAccount != null) {
                         output = String.format("%.2f", bankAccount.getInterest(years));
                     } else {
                         output = "Account does not exist";
                     }
-                    break;
+                }
+
+                if (output != null) {
+                    System.out.println(output);
+                }
+
+                line = scanner.nextLine();
             }
-            System.out.println(output);
-            line = sc.nextLine();
         }
     }
-}
