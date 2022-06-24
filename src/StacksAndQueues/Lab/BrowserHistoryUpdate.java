@@ -22,7 +22,7 @@ public class BrowserHistoryUpdate {
                 }
             }
             if(input.equals("forward")){
-                if(history.size()<1){
+                if(history.size()==0){
                     System.out.println("no next URLs");
                 }else{
                     urls.push(history.peek());

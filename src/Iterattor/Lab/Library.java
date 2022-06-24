@@ -1,5 +1,7 @@
 package Iterattor.Lab;
 
+import Iterattor.Lab.BookComparator.Book;
+
 import java.util.Iterator;
 
 public class Library implements Iterable<Book> {

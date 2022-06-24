@@ -1,7 +1,6 @@
 package Genn;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -11,9 +10,7 @@ public class CustomList<T extends Comparable<T>> {
     public CustomList() {
         this.values = new ArrayList<>();
     }
-    public int size(){
-        return values.size();
-    }
+
     public void add(T element) {
         values.add(element);
     }
@@ -42,9 +39,13 @@ public class CustomList<T extends Comparable<T>> {
         return values.stream().max(Comparable::compareTo).get();
     }
 
-    public void sort(CustomList<T> list) {
-        List<T> list2 = new ArrayList<>();
-       //TODO sort the list!!!
+
+
+    public int size(){
+        return values.size();
+    }
+    public T get(int index){
+        return values.get(index);
     }
 
     @Override
