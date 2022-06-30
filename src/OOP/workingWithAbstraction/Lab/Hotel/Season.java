@@ -1,4 +1,4 @@
-package OOP.workingWithAbstraction.Hotel;
+package OOP.workingWithAbstraction.Lab.Hotel;
 
 public enum Season {
     AUTUMN(1),
