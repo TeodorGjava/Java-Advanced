@@ -4,12 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 public class Concrete {
-    String client;
-    String date;
-    int cube10x10;
-    int cube15x15;
-    int lt;
-    Map<String, Double> materials;
+    private String client;
+    private String date;
+    private int cube10x10;
+    private int cube15x15;
+    private int lt;
+    private Map<String, Double> materials;
 
     public String getClient() {
         return client;
