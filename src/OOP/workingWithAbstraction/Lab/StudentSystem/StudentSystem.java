@@ -32,7 +32,7 @@ public class StudentSystem {
 
         } else if (command.equals("Show")) {
             Student student = studentsByName.get(name);
-            if (studentsByName != null) {
+            if (student != null) {
                 System.out.println(student.getInfo());
             }
         }else{
