@@ -1,4 +1,4 @@
-package hierarchy;
+package OOP.Inheritance.Exe.hierarchy;
 
 public class Tomcat extends Cat{
     public Tomcat(String name, int age) {

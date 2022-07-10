@@ -1,4 +1,4 @@
-package hierarchy;
+package OOP.Inheritance.Exe.hierarchy;
 
 public class Kitten extends Cat{
     public Kitten(String name, int age) {

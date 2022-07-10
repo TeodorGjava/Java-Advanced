@@ -1,4 +1,4 @@
-package hierarchy;
+package OOP.Inheritance.Exe.hierarchy;
 
 public class Frog extends Animal{
     public Frog(String name, int age, String gender) {

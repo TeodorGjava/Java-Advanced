@@ -1,4 +1,4 @@
-package hierarchy;
+package OOP.Inheritance.Exe.hierarchy;
 
 import java.util.Scanner;
 
