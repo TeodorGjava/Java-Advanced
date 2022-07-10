@@ -1,3 +1,5 @@
+package OOP.Inheritance.Lab;
+
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 

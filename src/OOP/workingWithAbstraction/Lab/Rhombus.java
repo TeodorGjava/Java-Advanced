@@ -3,20 +3,31 @@ package OOP.workingWithAbstraction.Lab;
 import java.util.Scanner;
 
 public class Rhombus {
+    private static int sizeOfRhombus = 0;
+
     public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
+        sizeOfRhombus = Integer.parseInt(console.nextLine());
 
-        Scanner sc = new Scanner(System.in);
-        int n = Integer.parseInt(sc.nextLine());
-
-        printRhombus(n,n-1);
-
+        printRhombus();
     }
 
-    private static void printRhombus(int size,int i) {
-        for (int j = 0; j <=size ; j++) {
-            System.out.print(" ");
+    private static void printRhombus() {
+        for (int rowNumber = 1; rowNumber <= sizeOfRhombus * 2 - 1; rowNumber++) {
+            int starsOnRow = rowNumber > sizeOfRhombus ? sizeOfRhombus * 2 - rowNumber : rowNumber;
+            printRow(starsOnRow);
         }
+    }
 
+    private static void printRow(int starsOnRow) {
+        String star = "* ".repeat(starsOnRow);
+        String space = " ".repeat(sizeOfRhombus - starsOnRow);
+
+        String row = space +
+                star +
+                space;
+        System.out.println(row);
     }
 
 }
+
