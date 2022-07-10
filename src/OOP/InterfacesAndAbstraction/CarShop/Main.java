@@ -1,11 +1,8 @@
 package OOP.InterfacesAndAbstraction.CarShop;
 
-import OOP.InterfacesAndAbstraction.CarShopUpdate.Car;
-import OOP.InterfacesAndAbstraction.CarShopUpdate.Seat;
-
 public class Main {
     public static void main(String[] args) {
-        Car seat = new Seat("Leon", "gray", 110, "Spain");
+        /*Car seat = new Seat("Leon", "gray", 110, "Spain");
 
         System.out.println(String.format(
                 "%s is %s color and have %s horse power",
@@ -13,7 +10,7 @@ public class Main {
                 seat.getColor(),
                 seat.getHorsePower()));
         System.out.println(seat.toString());
+    }*/
     }
-
 }
 
