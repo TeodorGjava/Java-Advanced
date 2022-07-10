@@ -1,4 +1,4 @@
-package OOP.Inheritance.Exe.hierarchy;
+package hierarchy;
 
 public class Animal {
     //
@@ -7,9 +7,9 @@ public class Animal {
     String gender;
 
     public Animal(String name, int age, String gender) {
-        this.name = name;
+        setName(name);
         setAge(age);
-        this.gender = gender;
+        setGender(gender);
     }
 
     public void setName(String name) {
@@ -20,7 +20,7 @@ public class Animal {
     }
 
     public void setAge(int age) {
-        if (age < 0) {
+        if (age < 0||String.valueOf(age).isEmpty()) {
             throw new IllegalArgumentException("Invalid input!");
         }
         this.age = age;
