@@ -12,6 +12,7 @@ public class Main {
         Season season = Season.parse(line[2]);
 
         Discount discount = Discount.parse(line[3]);
-
+        PriceCalculator priceCalculator = new PriceCalculator(pricePerDay,days,season,discount);
+        System.out.printf("%.2f%n",priceCalculator.calculatePrice());
     }
 }
