@@ -2,11 +2,11 @@ package OOP.Inheritance.Lab;
 
 public class Main {
     public static void main(String[] args) {
-        Puppy dog = new Puppy();
-        dog.eat();
-        dog.bark();
-        Cat cat = new Cat();
-        cat.eat();
-        cat.meow();
+        RandomArrayList rnd = new RandomArrayList();
+        rnd.add("1");
+        rnd.add("2");
+        rnd.add("3");
+        rnd.add("7");
+        System.out.println(rnd.getRandomElement());
     }
 }
