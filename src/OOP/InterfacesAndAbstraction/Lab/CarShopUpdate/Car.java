@@ -1,9 +1,9 @@
-package OOP.InterfacesAndAbstraction.CarShop;
+package OOP.InterfacesAndAbstraction.Lab.CarShopUpdate;
 
 import java.io.Serializable;
 
-public interface Car extends Serializable {
-    int tires=4;
+public interface Car extends Serializable  {
+
     //+getModel(): String
     //+getColor(): String
     //+getHorsePower(): Integer
@@ -12,4 +12,5 @@ public interface Car extends Serializable {
     String getColor();
     Integer getHorsePower();
     String countryProduced();
+
 }

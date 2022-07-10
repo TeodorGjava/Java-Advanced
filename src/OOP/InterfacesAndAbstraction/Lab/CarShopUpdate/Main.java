@@ -1,4 +1,4 @@
-package OOP.InterfacesAndAbstraction.CarShopUpdate;
+package OOP.InterfacesAndAbstraction.Lab.CarShopUpdate;
 
 public class Main {
     public static void main(String[] args) {

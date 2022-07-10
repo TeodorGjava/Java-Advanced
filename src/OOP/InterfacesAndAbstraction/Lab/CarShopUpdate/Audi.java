@@ -1,4 +1,4 @@
-package OOP.InterfacesAndAbstraction.CarShopUpdate;
+package OOP.InterfacesAndAbstraction.Lab.CarShopUpdate;
 
 public class Audi extends CarImpl implements Rentable {
     private String model;

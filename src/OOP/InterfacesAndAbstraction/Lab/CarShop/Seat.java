@@ -1,4 +1,4 @@
-package OOP.InterfacesAndAbstraction.CarShop;
+package OOP.InterfacesAndAbstraction.Lab.CarShop;
 
 public class Seat implements Car {
     String model;

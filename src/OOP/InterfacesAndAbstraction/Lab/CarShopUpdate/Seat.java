@@ -1,4 +1,4 @@
-package OOP.InterfacesAndAbstraction.CarShopUpdate;
+package OOP.InterfacesAndAbstraction.Lab.CarShopUpdate;
 
 public class Seat extends CarImpl implements Sellable{
     private String model;

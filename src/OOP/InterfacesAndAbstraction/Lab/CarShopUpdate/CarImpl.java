@@ -1,4 +1,4 @@
-package OOP.InterfacesAndAbstraction.CarShopUpdate;
+package OOP.InterfacesAndAbstraction.Lab.CarShopUpdate;
 
 public class CarImpl implements Car{
     private static final int TIRE = 4;
