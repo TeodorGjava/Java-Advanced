@@ -1,6 +1,6 @@
 package OOP.InterfacesAndAbstraction.Lab.SayHello;
 
-public class European implements Person{
+public class European implements Person {
     private String name;
 
     public European(String name) {
