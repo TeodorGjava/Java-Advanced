@@ -1,4 +1,4 @@
-package barracksWars.models.units;
+package OOP.Reflection.barracksWars.models.units;
 
 public class Gunner extends AbstractUnit {
     private static final int GUNNER_HEALTH = 20;
