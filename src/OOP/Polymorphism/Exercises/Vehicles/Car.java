@@ -23,6 +23,6 @@ public class Car extends Vehicle{
 
     @Override
     void refuel(double liters) {
-        this.setFuel(this.getFuel()+liters);
+        this.setFuel(this.getFuel()+liters*0.95);
     }
 }
