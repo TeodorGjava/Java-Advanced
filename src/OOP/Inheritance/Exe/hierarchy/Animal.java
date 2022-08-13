@@ -2,9 +2,9 @@ package OOP.Inheritance.Exe.hierarchy;
 
 public class Animal {
     //
-    String name;
-    int age;
-    String gender;
+    private String name;
+    private int age;
+    private String gender;
 
     public Animal(String name, int age, String gender) {
         setName(name);
@@ -51,6 +51,8 @@ public class Animal {
 
     @Override
     public String toString() {
-        return String.format("%s%n%s %d %s%n%s%n",this.getClass().getSimpleName(),  name, age, gender, produceSound());
+        return this.getClass().getSimpleName() + System.lineSeparator() +
+                this.name + " " + age + " " + gender + System.lineSeparator() +
+                produceSound();
     }
 }
