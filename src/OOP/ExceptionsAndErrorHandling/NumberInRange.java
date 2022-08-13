@@ -1,37 +1,42 @@
 package OOP.ExceptionsAndErrorHandling;
 
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.Scanner;
+
 
 public class NumberInRange {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int[] bounds = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+        Scanner console = new Scanner(System.in);
 
-        String number = sc.nextLine();
+        int[] range = Arrays.stream(console.nextLine().split("\\s+")).mapToInt(Integer::parseInt).toArray();
 
-        System.out.printf("Range: [%s...%s]%n", bounds[0], bounds[1]);
-        int n = 0;
-        while (true) {
+        int begin = range[0];
+        int end = range[1];
+        System.out.println("Range: [" + begin + "..." + end + "]");
+
+        boolean isInRange = false;
+
+        String input = null;
+
+        while (!isInRange) {
+            Optional<Integer> number = Optional.empty();
+            input = console.nextLine();
+
             try {
-                n = Integer.parseInt(number);
-                isValid(n, bounds);
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid number: " + number);
+                number = Optional.of(Integer.parseInt(input));
+
+            } catch (NumberFormatException ignore) {
             }
 
+            if (number.isEmpty() || number.get() < begin || number.get() > end) {
+                System.out.println("Invalid number: " + input);
+
+            } else {
+                isInRange = true;
+            }
         }
 
-
-    }
-
-    public static boolean isValid(int number, int[] bounds) {
-        if (number >= bounds[0] && number <= bounds[1]) {
-            System.out.println("Valid number: " + number);
-            return true;
-        } else {
-            System.out.println("Invalid number " + number);
-        }
-        return false;
+        System.out.println("Valid number: " + input);
     }
 }
