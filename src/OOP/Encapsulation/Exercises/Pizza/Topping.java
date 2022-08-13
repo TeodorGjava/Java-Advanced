@@ -14,34 +14,45 @@ public class Topping {
 
 
     private void setToppingType(String toppingType) {
-        switch (toppingType) {
-            case "Meat":
-                modifier = 1.2;
-                break;
-            case "Veggies":
-                modifier = 0.8;
-                break;
-            case "Cheese":
-                modifier = 1.1;
-                break;
-            case "Sauce":
-                modifier=0.9;
-                break;
-            default:
-                String msg = String.format("Cannot place %s on top of your pizza.", toppingType);
-                throw new IllegalArgumentException(msg);
+        if("Meat".equals(toppingType) ||
+                "Veggies".equals(toppingType) ||
+                "Cheese".equals(toppingType) ||
+                "Sauce".equals(toppingType)) {
+            this.toppingType = toppingType;
+        } else {
+            throw new IllegalArgumentException("Cannot place " + toppingType + " on top of your pizza.");
         }
-        this.toppingType = toppingType;
     }
 
     private void setWeight(double weight) {
-        if (weight < 1 || weight > 50) {
-            String msg = String.format("%s weight shoud be in range [1..50].");
-            throw new IllegalArgumentException(msg);
+        if(weight >= 1 && weight <= 50) {
+            this.weight = weight;
+        } else {
+            throw new IllegalArgumentException(toppingType + " weight should be in the range [1..50].");
         }
-        this.weight = weight;
     }
-    public double calculateCalories(){
-        return weight*2*modifier;
+
+    public double calculateCalories() {
+        //Meat – 1.2;
+        //Veggies – 0.8;
+        //Cheese – 1.1;
+        //Sauce – 0.9;
+        double modifierTopping = 0.0;
+
+        switch (toppingType) {
+            case "Meat":
+                modifierTopping = 1.2;
+                break;
+            case "Veggies":
+                modifierTopping = 0.8;
+                break;
+            case "Cheese":
+                modifierTopping = 1.1;
+                break;
+            case "Sauce":
+                modifierTopping = 0.9;
+                break;
+        }
+        return 2 * weight * modifierTopping;
     }
 }

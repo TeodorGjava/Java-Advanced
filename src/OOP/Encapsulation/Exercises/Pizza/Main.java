@@ -3,44 +3,39 @@ package OOP.Encapsulation.Exercises.Pizza;
 import java.util.Scanner;
 
 public class Main {
-    static double cals = 0;
+    static String[] input = null;
 
     public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
 
-        //•	On the first line is the pizza name and the number of toppings it has in the format:
+        readAttributes(console); //read pizza
         //Pizza {pizzaName} {numberOfToppings}
-        Scanner sc = new Scanner(System.in);
-        String[] pizzaData = sc.nextLine().split(" ");
-        String pizzaName = pizzaData[1];
-        int numOfToppings = Integer.parseInt(pizzaData[2]);
-        if (numOfToppings > 10) {
-            System.out.println("Number of toppings should be in range [0..10].");
-            return;
-        }
-        String[] doughData = sc.nextLine().split(" ");
-        //Dough Wholegrain Crispy 100
-        String doughType = doughData[1];
-        String bakingTechnique = doughData[2];
-        int weight = Integer.parseInt(doughData[3]);
 
         try {
-            Dough dough = new Dough(doughType, bakingTechnique, weight);
-            Pizza pizza = new Pizza(pizzaName, numOfToppings);
-            String[] toppings = sc.nextLine().split(" ");
-            cals += dough.calculateCalories();
-            while (!toppings[0].equals("END")) {
+            Pizza pizza = new Pizza(input[1], Integer.parseInt(input[2]));
 
-                String toppingType = toppings[1];
-                int toppingWeight = Integer.parseInt(toppings[2]);
+            readAttributes(console); //read dough
+            //Dough {flourType} {bakingTechnique} {weightInGrams}
+            Dough dough = new Dough(input[1], input[2], Double.parseDouble(input[3]));
+            pizza.setDough(dough);
 
-                Topping topping = new Topping(toppingType, toppingWeight);
+            readAttributes(console);//read topping;
+
+            while (!"END".equals(input[0])) {
+                //Topping {toppingType} {weightInGrams}
+                Topping topping = new Topping(input[1], Double.parseDouble(input[2]));
                 pizza.addTopping(topping);
-                toppings = sc.nextLine().split(" ");
-                cals += topping.calculateCalories();
+                readAttributes(console);
             }
-        } catch (IllegalArgumentException ex) {
-            System.out.println(ex.getMessage());
+
+            System.out.printf("%s - %.2f", pizza.getName(), pizza.getOverallCalories());
+
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
         }
-        System.out.printf("%s - %.2f",pizzaName,cals);
+    }
+
+    private static void readAttributes(Scanner console) {
+        input = console.nextLine().split("\\s+");
     }
 }

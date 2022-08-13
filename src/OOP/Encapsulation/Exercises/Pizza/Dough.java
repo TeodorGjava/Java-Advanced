@@ -4,8 +4,7 @@ public class Dough {
     //flourType: String
     //bakingTechnique: String
     //weight: double
-    private double flourModifier;
-    private double backingTechniqueModifier;
+
     private String flourType;
     private String bakingTechnique;
     private double weight;
